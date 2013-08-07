@@ -1,0 +1,23 @@
+#!/bin/bash
+#
+#This script finds the file given as input by the user in the system
+#
+echo -e "Please enter the name of the FILE or DIR you want to search: \c"
+read filename
+find / -name $filename > path
+x=`cat path | wc -l`
+
+  echo "There are $x path where the file exist"
+  echo -e "Do you want to display all (yes / no) : \c"
+  read option1
+  option2=yes
+
+
+  if [ "$option1" == "$option2" ]; then
+  echo "These are the paths : "
+  cat path
+  rm path
+  else
+  echo "Thank you for using the script"
+  fi
+  
