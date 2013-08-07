@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+#The script to find the no.of users in the system, no. users logged at present
+#and the number of process running in the system
+#
+
+x=`wc -l /etc/passwd | cut -d ' ' -f 1`
+echo "The number of possible users on the system : $x "
+y=`who | wc -l`
+echo "Number of users logged into the system : $y "
+top -n 1 > toplist
+z=`wc -l toplist | cut -d ' ' -f 1`
+echo "Total number of processes running : $z"
