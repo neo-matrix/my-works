@@ -1,0 +1,50 @@
+#!/bin/bash
+#
+#Menu based script for calculating
+#A simple calculator script gets the arguments and do the opration
+#
+echo "1. Addition"
+echo "2. Subtraction"
+echo "3. Multiplication"
+echo "4. Division"
+echo "5. Modulo"
+echo "6. Exit"
+
+echo -e "Please enter the operation you want to perform from the list above: \c"
+read a
+if [ $a -eq 6 ]; then
+echo "exiting...."
+sleep 1
+exit
+
+elif [ $a -le 7 ]; then
+echo -e "Enter two values: \c"
+read A B
+
+
+
+case $a in
+
+        1) echo `expr $A + $B`
+        ;;
+
+        2) echo `expr $A - $B`
+        ;;
+
+        3) echo `expr $A \* $B`
+        ;;
+
+        4) echo `expr $A / $B`
+        ;;
+
+        5) echo `expr $A % $B`
+        ;;
+
+esac
+
+else
+
+echo "Invalid selection"
+
+fi
+sh calc
