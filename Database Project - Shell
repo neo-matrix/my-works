@@ -1,0 +1,99 @@
+#!/bin/bash
+
+#
+#This script is a project to store contact information of users coice to a file
+#The name of the file is contacts
+#The format is text
+#
+
+clear
+echo "**********DATABASE PROJECT TO SAVE CONTACTS***********"
+
+fname=contacts           # The filename contacts is assigned to a variable fname
+
+test ! -f $fname && > $fname
+
+
+while true
+do
+clear
+echo "1. Create a record"
+echo "2. View records"
+echo "3. Search for records"
+echo "4. Delete records"
+echo "q to Quit"
+
+echo -e "please make your choice: \c"
+read selection
+
+
+case $selection in
+
+1)      echo -e "Hi, What's your name: \c"
+        read user                # Reading the user name, and will welcome him
+
+        echo "Welcome $user"
+        echo "Please enter the following details to store any contact informatio
+n"
+
+
+#Collecting information from the user
+        echo -e "Firstname: \c"
+        read firstname
+        echo -e "Surname: \c"
+        read surname
+        echo -e "Address: \c"
+        read address
+        echo -e "City: \c"
+        read city
+        echo -e "State: \c"
+        read state
+        echo -e "Zipcode: \c"
+        read zip
+
+
+        echo "$firstname:$surname:$address:$city:$state:$zip" >> $fname
+        echo "Record created successfully"
+        ;;
+
+
+#
+#Appending the input information to the contacts file
+#The field are separated by "-" as delimiter
+#
+
+
+
+2)
+        echo "The contacts in the file are as follows"
+        cat $fname | more       #Display the content of the file
+        
+#The number od contacts in the file
+        z=`cat $fname | wc -l`
+        echo "There are $z contacts in the database"
+;;
+
+
+q*|Q*) exit 0
+;;
+
+
+*)
+        if [ $selection > 4 ]
+        then
+        echo "Please enter a valid selection"
+        continue
+        elif [[ ! $selection =~ [^[:space:]] ]]
+        then
+        echo "Please enter a valid selection"
+        continue
+        else
+        echo "Project is yet to complete, WIP"
+        continue
+        fi
+
+;;
+
+esac
+done
+
