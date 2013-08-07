@@ -1,0 +1,43 @@
+#!/bin/bash
+
+echo "Hi what's your name?"
+read name
+echo -e  "Please enter you age: \c"
+read age
+age=`echo $age|cut -d ' ' -f 1`
+
+if [[ ! $age =~ [^[:space:]] ]]
+then
+echo "please enter age"
+exit
+
+elif [ $age -eq $age 2>/dev/null ]
+then
+age=$age
+
+else
+echo "please enter a valid integer in the next run"
+exit
+fi
+
+if [ $age -ge 59 ]
+then
+a=1
+
+else
+a=2
+
+fi
+
+
+case $a in
+1) echo "$name, you are retired"
+;;
+
+2) service=`expr 58 - $age`
+   echo "Please go to work $name, as you have $service years to retire"
+;;
+
+*) echo "Please enter a valid format, Only integers are accepted"
+
+esac
